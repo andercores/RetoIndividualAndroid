@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mapa.MapaFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvMapa"
+        android:layout_width="412dp"
+        android:layout_height="62dp"
+        android:text="ALMI"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="412dp"
+        android:layout_height="573dp"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/tvMapa"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
