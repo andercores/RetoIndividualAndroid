@@ -12,10 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.retoindividualandroid.Cursos;
+import com.example.retoindividualandroid.CursosAdapter;
+import com.example.retoindividualandroid.MainActivity;
 import com.example.retoindividualandroid.R;
+
+import java.util.ArrayList;
 
 public class InicioFragment extends Fragment
 {
+    private ArrayList<Cursos> cursos = new ArrayList<>();
 
     private InicioViewModel mViewModel;
 
@@ -25,9 +31,17 @@ public class InicioFragment extends Fragment
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState)
     {
+
         return inflater.inflate(R.layout.inicio_fragment, container, false);
     }
 

@@ -1,8 +1,10 @@
 package com.example.retoindividualandroid;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ListView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -16,9 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.retoindividualandroid.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
-
+    private ArrayList<Cursos> cursos = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        
+
         cursos();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -53,6 +57,12 @@ public class MainActivity extends AppCompatActivity
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        CursosAdapter adapter = new CursosAdapter(this, cursos);
+        ListView lista =findViewById(R.id.lvCursos);
+        lista.setAdapter(adapter);
+
+        Log.d("ERROR", String.valueOf(cursos.size()));
     }
 
     @Override
@@ -74,6 +84,15 @@ public class MainActivity extends AppCompatActivity
 
     public void cursos()
     {
+        ArrayList<Cursos> cursos = new ArrayList<>();
+        cursos.add(new Cursos("DAM1"));
+        cursos.add(new Cursos("DAM2"));
+        cursos.add(new Cursos("ASIR1"));
+        cursos.add(new Cursos("ASIR2"));
+        cursos.add(new Cursos("SMR1"));
+        cursos.add(new Cursos("SMR2"));
+        cursos.add(new Cursos("GA1"));
+        cursos.add(new Cursos("GA2"));
 
     }
 }

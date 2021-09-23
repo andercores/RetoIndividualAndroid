@@ -10,13 +10,12 @@
         android:id="@+id/ivLogo"
         android:layout_width="144dp"
         android:layout_height="95dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/logoalmi"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/lvCursos"
