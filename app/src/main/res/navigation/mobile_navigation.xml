@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.example.retoindividualandroid.ui.inicio.InicioFragment"
+        android:label="inicio_fragment"
+        tools:layout="@layout/inicio_fragment" />
+    <fragment
+        android:id="@+id/nav_galeria"
+        android:name="com.example.retoindividualandroid.ui.galeria.GaleriaFragment"
+        android:label="galeria_fragment"
+        tools:layout="@layout/galeria_fragment" />
+    <fragment
+        android:id="@+id/nav_mapa"
+        android:name="com.example.retoindividualandroid.ui.mapa.MapaFragment"
+        android:label="mapa_fragment"
+        tools:layout="@layout/mapa_fragment" />
+</navigation>
