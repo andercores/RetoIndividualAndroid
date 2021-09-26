@@ -47,7 +47,7 @@ public class CursosAdapter extends BaseAdapter
 
         fila = inflater.inflate(R.layout.fila_cursos, null);
         TextView tvCursos = fila.findViewById(R.id.tvCursos);
-        tvCursos.setText(cursos.get(i-1).getCurso());
+        tvCursos.setText(cursos.get(i).getCurso());
         return fila;
     }
 }

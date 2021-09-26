@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
     public void cursos()
     {
-        ArrayList<Cursos> cursos = new ArrayList<>();
+        cursos = new ArrayList<>();
         cursos.add(new Cursos("DAM1"));
         cursos.add(new Cursos("DAM2"));
         cursos.add(new Cursos("ASIR1"));
