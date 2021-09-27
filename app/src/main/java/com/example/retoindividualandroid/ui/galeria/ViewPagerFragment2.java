@@ -2,7 +2,11 @@ package com.example.retoindividualandroid.ui.galeria;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,63 +14,48 @@ import android.view.ViewGroup;
 
 import com.example.retoindividualandroid.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ViewPagerFragment2#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ViewPagerFragment2 extends Fragment
 {
+    String[] names= {"Fachada", "Fachada Lateral", "Entrada", "Portal", "Old School", "Metro", "Puerta Principal", "Recreo", "Torre Vigilancia 1", "Seguridad", "Torre 2"};
+    String[] pics= {"https://almi.eus/wp-content/uploads/2019/11/IMG_20191125_084551.jpg", "https://pbs.twimg.com/media/DBTdveuW0AAF2Mq.jpg:large",
+    "https://www.britishcouncil.es/sites/default/files/bilbao-centre-entrance-03.jpg", "https://static.pacelma.es/wp-content/uploads/2013/04/BIZ.002.001.png", "https://i.pinimg.com/originals/26/85/0d/26850d219311b90bea6faec98cfae29f.jpg",
+    "https://fastly.4sqi.net/img/general/600x600/25523274_TISWaXVkTVV0Uy8RvUJKSQnAZ_V5WXZZs-cQDpnGbUA.jpg", "https://estaticos.efe.com/efecom/recursos2/imagen.aspx?lVW2oAh2vjMriYEh7dqlXlsv6LHn373gQ4TncnkXVSTX-P-2bAoG0sxzXPZPAk5l-P-2fU5UgDJwV29nLFdATc7dlMusNQ-P-3d-P-3d",
+    "https://lavereda.cl/wp-content/uploads/2020/04/carcel-puente-alto.jpg", "https://cnnespanol.cnn.com/wp-content/uploads/2018/05/gettyimages-893727132.jpg?quality=100&strip=info", "https://media.primicias.ec/2021/02/30040025/carcel-guayaquil-2.jpeg",
+    "https://i2.wp.com/www.periodismo.com/wp-content/subid/img_djuarez_20200708-092643_imagenes_lv_otras_fuentes_carcel-k4LI-U4821884463168J-992x558@LaVanguardia-Web.jpg?resize=696%2C392&ssl=1"};
+    private RecyclerView  recyclerView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public ViewPagerFragment2()
     {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ViewPagerFragment2.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ViewPagerFragment2 newInstance(String param1, String param2)
-    {
-        ViewPagerFragment2 fragment = new ViewPagerFragment2();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_view_pager, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_pager2, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerInterior);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2, GridLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(new RecyclerAdapter(names, pics, getContext()));
+
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 }
