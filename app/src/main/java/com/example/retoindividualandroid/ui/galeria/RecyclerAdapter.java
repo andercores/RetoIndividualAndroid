@@ -1,5 +1,6 @@
 package com.example.retoindividualandroid.ui.galeria;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.retoindividualandroid.R;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>
 {
 
     String[] list;
-    public RecyclerAdapter(String[] list) {
+    String[] img;
+    Context context;
+
+    public RecyclerAdapter(String[] list, String[] img, Context context) {
         this.list = list;
+        this.img = img;
+        this.context = context;
+
     }
     @NonNull
     @Override
@@ -30,6 +38,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
      holder.textView.setText(list[position]);
+     //holder.imageView.setImageResource(Integer.parseInt(img[position]));
+     ImageView imageView;
+     imageView = holder.imageView.findViewById(R.id.ivGrid);
+     Glide.with(context).load(img[position]).into(imageView);
     }
 
     @Override

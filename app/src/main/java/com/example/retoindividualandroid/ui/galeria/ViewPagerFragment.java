@@ -19,7 +19,10 @@ import com.example.retoindividualandroid.R;
 
 public class ViewPagerFragment extends Fragment {
 
-    String[] names= {"pepe", "paco", "pipo", "rata", "carlos", "manzana", "pescador", "wewe", "qaqa", "qwerty", "toto", "tito", "jaja", "jujo", "here", "wqwq"};
+    String[] names= {"Secretaría", "Aula 1", "Aula 2", "Aula 3", "Aula 5", "Aula 6", "Aula 7", "Aula 8", "Pasillo principal"};
+    String[] pics= {"https://almi.eus/wp-content/uploads/2016/09/03-Entrada-Almi-1024x576.jpg", "https://almi.eus/wp-content/uploads/2018/12/Kontsumobide-IMG-20181217-WA0000-1024x768.jpg",
+    "https://www.ituna.eus/wp-content/uploads/2019/02/photo-2019-02-22-12-12-24-1024x619.jpg", "https://almi.eus/wp-content/uploads/2018/05/IMG_20180516_180441.jpg", "https://almi.eus/wp-content/uploads/2016/09/08-Aula-de-ordenadores-1024x576.jpg",
+    "https://almi.eus/wp-content/uploads/2016/05/historia2-1.png", "https://almi.eus/wp-content/uploads/2017/11/IMG_20171122_085727.jpg", "https://almi.eus/wp-content/uploads/2016/09/06-Aula-Ordenadores-1024x576.jpg", "https://almi.eus/wp-content/uploads/2016/09/04-Entrada-Almi-1024x576.jpg"};
     TextView textView;
     public static final String ARG_OBJECT = "object";
     private RecyclerView recyclerView;
@@ -45,7 +48,7 @@ public class ViewPagerFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerInterior);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 2, GridLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new RecyclerAdapter(names));
+        recyclerView.setAdapter(new RecyclerAdapter(names, pics, getContext()));
 
 
         return view;

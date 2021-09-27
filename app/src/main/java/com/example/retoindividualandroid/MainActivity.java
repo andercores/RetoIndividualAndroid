@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        cursos();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -58,9 +57,6 @@ public class MainActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        CursosAdapter adapter = new CursosAdapter(this, cursos);
-        ListView lista =findViewById(R.id.lvCursos);
-        lista.setAdapter(adapter);
 
         Log.d("ERROR", String.valueOf(cursos.size()));
     }
@@ -82,27 +78,4 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void cursos()
-    {
-        cursos = new ArrayList<>();
-        cursos.add(new Cursos("DAM1"));
-        cursos.add(new Cursos("DAM2"));
-        cursos.add(new Cursos("ASIR1"));
-        cursos.add(new Cursos("ASIR2"));
-        cursos.add(new Cursos("SMR1"));
-        cursos.add(new Cursos("SMR2"));
-        cursos.add(new Cursos("GA1"));
-        cursos.add(new Cursos("GA2"));
-
-    }
-
-    public ArrayList<Cursos> getCursos()
-    {
-        return cursos;
-    }
-
-    public void setCursos(ArrayList<Cursos> cursos)
-    {
-        this.cursos = cursos;
-    }
 }

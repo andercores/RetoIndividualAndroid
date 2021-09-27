@@ -50,9 +50,13 @@ public class InicioFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState)
     {
+        cursos();
         View view = inflater.inflate(R.layout.inicio_fragment, container, false);
         listView = view.findViewById(R.id.lvCursos);
-        cursos();
+        CursosAdapter adapter = new CursosAdapter(view.getContext(), cursos);
+        ListView lista =view.findViewById(R.id.lvCursos);
+        lista.setAdapter(adapter);
+
 
         return view;
     }
