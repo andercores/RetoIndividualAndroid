@@ -1,5 +1,6 @@
 package com.example.retoindividualandroid.ui.galeria;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -41,13 +42,48 @@ public class GaleriaFragment extends Fragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        vpAdapter = new ViewPagerAdapter(this);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+
+        vpAdapter = new ViewPagerAdapter(fm, getLifecycle());
         viewPager2 = view.findViewById(R.id.vpGaleria);
         viewPager2.setAdapter(vpAdapter);
 
         tabLayout = view.findViewById(R.id.tab_layout);
 
-        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText("OBJECT " + (position + 1))).attach();
+        //new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText("Interior ")).attach();
+        tabLayout.addTab(tabLayout.newTab().setText("Interior"));
+        tabLayout.addTab(tabLayout.newTab().setText("Exterior"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab)
+            {
+                viewPager2.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab)
+            {
+
+            }
+        });
+
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback()
+        {
+            @Override
+            public void onPageSelected(int position)
+            {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+
     }
 
     @Override

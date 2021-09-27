@@ -95,4 +95,14 @@ public class MainActivity extends AppCompatActivity
         cursos.add(new Cursos("GA2"));
 
     }
+
+    public ArrayList<Cursos> getCursos()
+    {
+        return cursos;
+    }
+
+    public void setCursos(ArrayList<Cursos> cursos)
+    {
+        this.cursos = cursos;
+    }
 }
