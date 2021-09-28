@@ -1,6 +1,7 @@
 package com.example.retoindividualandroid.ui.galeria;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -42,6 +45,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
      ImageView imageView;
      imageView = holder.imageView.findViewById(R.id.ivGrid);
      Glide.with(context).load(img[position]).into(imageView);
+
+
+        TextView textView = holder.textView.findViewById(R.id.tvGrid);
+
+         holder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Toast.makeText(view.getContext(), "Has clicado en: " + textView.getText(), Toast.LENGTH_SHORT).show();
+                DialogFragment dialogFragment = new DialogFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("pos", img[holder.getAdapterPosition()]);
+                dialogFragment.setArguments(bundle);
+
+                dialogFragment.show(((FragmentActivity) context).getSupportFragmentManager(), "Imagen");
+
+            }
+        });
+
+
     }
 
     @Override
@@ -61,14 +86,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             textView = itemView.findViewById(R.id.tvGrid);
             imageView = itemView.findViewById(R.id.ivGrid);
 
-            itemView.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View view)
-                {
-                    Toast.makeText(view.getContext(), "Has clicado en: " + textView.getText(), Toast.LENGTH_SHORT).show();
-                }
-            });
+
         }
     }
+
+
 }
